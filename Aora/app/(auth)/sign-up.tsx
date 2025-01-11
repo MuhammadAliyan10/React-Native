@@ -6,8 +6,9 @@ import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
 import { Link } from "expo-router";
 
-const SignIn = () => {
+const SignUp = () => {
   const [form, setForm] = useState({
+    username: "",
     email: "",
     password: "",
   });
@@ -26,6 +27,14 @@ const SignIn = () => {
             Log in to Aora
           </Text>
           <FormField
+            title="Username"
+            value={form.username}
+            placeHolder="Enter your username"
+            handleChangeText={(e: any) => setForm({ ...form, username: e })}
+            otherStyles="mt-7"
+            keyBoardType="email-address"
+          />
+          <FormField
             title="Email"
             value={form.email}
             placeHolder="Enter your email"
@@ -41,20 +50,20 @@ const SignIn = () => {
             otherStyles="mt-7"
           />
           <CustomButton
-            title="Sign In"
+            title="Sign up"
             handlePress={submit}
             containerStyle="mt-7"
             isLoading={isLoading}
           />
           <View className="justify-center items-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
-              Don't have an account?
+              Already have an account?
             </Text>
             <Link
-              href={"/sign-up"}
+              href={"/sign-in"}
               className="text-lg font-psemibold text-secondary"
             >
-              Sign Up
+              Sign In
             </Link>
           </View>
         </View>
@@ -63,4 +72,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
