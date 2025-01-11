@@ -1,14 +1,38 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Tabs } from "expo-router";
 import React from "react";
+import { Image, View } from "react-native";
+import { icons } from "../../constants";
 
-const TabsLayout = () => {
+const TabIcon = ({ icon, color, name, focused }: any) => {
   return (
     <View>
-      <Text>TabsLayout</Text>
+      <Image source={icon} resizeMode="contain" className="w-6 h-6" />
     </View>
   );
 };
 
-export default TabsLayout;
+const TabsLayout = () => {
+  return (
+    <>
+      <Tabs>
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.home}
+                name="Home"
+                color={color}
+                focused={focused}
+              />
+            ),
+          }}
+        />
+      </Tabs>
+    </>
+  );
+};
 
-const styles = StyleSheet.create({});
+export default TabsLayout;
